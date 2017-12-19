@@ -1,4 +1,4 @@
-#include "bmplib.h"
+#include <tqbmp.h>
 
 /*
 * Author: Young-Geol Jo (rangewing@kaist.ac.kr / rangewing@wingdev.kr)
@@ -46,15 +46,13 @@ void getBMPsize(BMP *bmp, uint *w, uint *h) {
 	*h = BMP_GetHeight(bmp);
 }
 
-BMPImage *openBMP(const char *bmpfile) {
+BMPImage *newBMP(uint w, uint h) {
 	BMPImage *img = malloc(sizeof(BMPImage));
-	return getBMPImage(img, bmpfile) ? NULL : img;
+	_initImage(img, BMP_Create(w, h, 0));
+	return img;
 }
 
-int getBMPImage(BMPImage *img, const char *bmpfile) {
-	BMP *bmp = BMP_ReadFile(bmpfile);
-	checkBMP(-1);
-
+int _initImage(BMPImage *img, BMP *bmp) {
 	getBMPsize(bmp, &img->w, &img->h);
 
 	uint i, j;
@@ -76,6 +74,18 @@ int getBMPImage(BMPImage *img, const char *bmpfile) {
 			img->rgb[i][j].b = b;
 		}
 	}
+	return 0;
+}
+
+BMPImage *openBMP(const char *bmpfile) {
+	BMPImage *img = malloc(sizeof(BMPImage));
+	return getBMPImage(img, bmpfile) ? NULL : img;
+}
+
+int getBMPImage(BMPImage *img, const char *bmpfile) {
+	BMP *bmp = BMP_ReadFile(bmpfile);
+	checkBMP(-1);
+	_initImage(img, bmp);
 	return 0;
 }
 

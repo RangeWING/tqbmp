@@ -1,2 +1,2 @@
 # tqbmp
-Tiny BMP library shortcut using qdbmp
+Tiny BMP library shortcut using qdbmp (C)
