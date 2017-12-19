@@ -3,7 +3,6 @@
 /*
 * Author: Young-Geol Jo (rangewing@kaist.ac.kr / rangewing@wingdev.kr)
 * BMP image library shortcut using qdbmp
-* Only for KAIST 2017 Winter YOUTH Camp
 */
 
 uint32_t getRGB(BMPImage *img, uint i, uint j, uint8_t *r, uint8_t *g, uint8_t *b) {
@@ -77,5 +76,11 @@ int getBMPImage(BMPImage *img, const char *bmpfile) {
 			img->rgb[i][j].b = b;
 		}
 	}
+	return 0;
+}
+
+int writeBMP(BMPImage *img, const char *bmpfile) {
+	BMP_WriteFile(img->bmp, bmpfile);
+	checkBMP(-2);
 	return 0;
 }
