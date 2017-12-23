@@ -64,7 +64,7 @@ typedef struct BMPImage {
  
 ## Example
 ```
-uint w, h, i, j, idx = 0;
+uint w, h, i, j;
 uint8_t p;
 BMPImage *img, *newimg;
 
