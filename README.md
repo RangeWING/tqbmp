@@ -4,11 +4,9 @@ Tiny BMP library shortcut using qdbmp (C)
 
 ## struct
  * RGB  
-	<pre><code>
 	typedef struct RGB {
 		uint8_t r, g, b;
 	} RGB;
-	</code></pre>
 	
  * BMPImage  
 	<pre><code>
