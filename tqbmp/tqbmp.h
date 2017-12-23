@@ -12,7 +12,7 @@
 
 #define checkBMP(k) BMP_CHECK_ERROR(stdout, k);
 
-typedef unsigned int uint;
+typedef unsigned long uint;
  
 typedef struct RGB {
 	uint8_t r, g, b;
@@ -31,9 +31,9 @@ BMPImage *newBMP(uint w, uint h);
 int getBMPImage(BMPImage *img, const char *bmpfile);
 int _initImage(BMPImage *img, BMP *bmp);
 uint32_t getRGB(BMPImage *img, uint i, uint j, uint8_t *r, uint8_t *g, uint8_t *b);
-void setRGB(BMPImage *img, uint i, uint j, uint8_t r, uint8_t g, uint8_t b);
+void setRGB(BMPImage *img);
 uint8_t getPixel(BMPImage *img, uint i, uint j, uint8_t *p);
-void setPixel(BMPImage *img, uint i, uint j, uint8_t p);
+void setPixel(BMPImage *img);
 int writeBMP(BMPImage *img, const char *bmpfile);
 void freeBMP(BMPImage *img);
 void closeBMP(BMPImage *img);
