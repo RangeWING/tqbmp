@@ -2,28 +2,28 @@
 Tiny BMP library shortcut using qdbmp (C)
 > qdbmp: http://qdbmp.sourceforge.net
 
-## struct
+## structures
  * RGB  
-	<code>
-	typedef struct RGB {
-		uint8_t r, g, b;
-	} RGB;
-	</code>
+<pre><code>
+typedef struct RGB {
+	uint8_t r, g, b;
+} RGB;
+</code></pre>
 	
  * BMPImage  
-	<pre><code>
-	typedef struct BMPImage {
-		uint w, h;
-		BMP *bmp;
-		struct RGB **rgb;
-		uint8_t **pixel;
-	} BMPImage;
-	</code></pre>
+<pre><code>
+typedef struct BMPImage {
+	uint w, h;
+	BMP *bmp;
+	struct RGB **rgb;
+	uint8_t **pixel;
+} BMPImage;
+</code></pre>
 	
 	
 
-## function
-<code>
+## functions
+<pre><code>
 	void getBMPsize(BMP *bmp, uint *w, uint *h);
 	BMPImage *openBMP(const char *bmpfile);
 	BMPImage *newBMP(uint w, uint h);
@@ -36,4 +36,4 @@ Tiny BMP library shortcut using qdbmp (C)
 	int writeBMP(BMPImage *img, const char *bmpfile);
 	void freeBMP(BMPImage *img);
 	void closeBMP(BMPImage *img);
-</code>
+</code></pre>
