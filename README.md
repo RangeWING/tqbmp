@@ -32,29 +32,29 @@ typedef struct BMPImage {
 ## functions
 ### User functions
  * `BMPImage *openBMP(const char *bmpfile)`
-  * open a BMP file and returns the pointer of BMPImage. Use it just like fopen(). 
-  * BMP 파일을 엽니다. fopen()과 비슷합니다.
+   * open a BMP file and returns the pointer of BMPImage. Use it just like fopen(). 
+   * BMP 파일을 엽니다. fopen()과 비슷합니다.
  * `BMPImage *newBMP(uint w, uint h)`
-  * make a new BMP image of size w×h.
-  * 가로 w, 세로 h 크기의 BMP 이미지를 만듭니다.
+   * make a new BMP image of size w×h.
+   * 가로 w, 세로 h 크기의 BMP 이미지를 만듭니다.
  * `void closeBMP(BMPImage *img)`
-  * deallocate (free) all of its members and **also itself**. Use this if you made BMPImage with `openBMP()` or `newBMP()`.
-  * img의 모든 멤버의 할당을 해제하고 img 자체도 해제합니다. `openBMP()`나 `newBMP()`를 이용하여 BMPImage를 만들었다면 이 함수를 사용하세요.
+   * deallocate (free) all of its members and **also itself**. Use this if you made BMPImage with `openBMP()` or `newBMP()`.
+   * img의 모든 멤버의 할당을 해제하고 img 자체도 해제합니다. `openBMP()`나 `newBMP()`를 이용하여 BMPImage를 만들었다면 이 함수를 사용하세요.
  * `int getBMPImage(BMPImage *img, const char *bmpfile)`
-  * get a BMP file and stores it to img.
-  * BMP 파일을 읽어서 img에 저장합니다.
+   * get a BMP file and stores it to img.
+   * BMP 파일을 읽어서 img에 저장합니다.
  * `void freeBMP(BMPImage *img)`
-  * deallocate (free) all of its members. Use this if you made BMPImage with `getBMPImage()`.
-  * img의 모든 멤버의 할당을 해제합니다. `getBMPImage()`를 이용하여 BMPImage를 만들었다면 이 함수를 사용하세요.
+   * deallocate (free) all of its members. Use this if you made BMPImage with `getBMPImage()`.
+   * img의 모든 멤버의 할당을 해제합니다. `getBMPImage()`를 이용하여 BMPImage를 만들었다면 이 함수를 사용하세요.
  * `void setRGB(BMPImage *img)`
-  * update all of its RGB values changed in the ARRAY (rgb) to BMP instance.
-  * 변경한 rgb 배열의 RGB 값을 BMP에 반영합니다.
+   * update all of its RGB values changed in the ARRAY (rgb) to BMP instance.
+   * 변경한 rgb 배열의 RGB 값을 BMP에 반영합니다.
  * `void setPixel(BMPImage *img)`
-  * update all of its PIXEL(grayscale) values changed in the ARRAY (pixel) to BMP instance.
-  * 변경한 pixel 배열의 흑백 값을 BMP에 반영합니다.
+   * update all of its PIXEL(grayscale) values changed in the ARRAY (pixel) to BMP instance.
+   * 변경한 pixel 배열의 흑백 값을 BMP에 반영합니다.
  * `int writeBMP(BMPImage *img, const char *bmpfile)`
-  * write the image to the file.
-  * 이미지를 file에 씁니다.
+   * write the image to the file.
+   * 이미지를 file에 씁니다.
 
 ### Internal functions
  * `void getBMPsize(BMP *bmp, uint *w, uint *h)`: get the size of BMP.
@@ -74,10 +74,10 @@ h = img->h;
 
 newimg = newBMP(w, h);
 for (i = 0; i < h; i++) {
-	for (j = 0; j < w; j++) {
-		p = img->pixel[i][j];
-		newimg->pixel[i][j] = 255 - p; // reverse the value
-	}
+  for (j = 0; j < w; j++) {
+    p = img->pixel[i][j];
+    newimg->pixel[i][j] = 255 - p; // reverse the value
+  }
 }
  		
 setPixel(newimg);	// update the BMP with grayscale value
