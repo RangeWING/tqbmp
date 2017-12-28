@@ -15,8 +15,10 @@
 typedef unsigned long uint;
  
 typedef struct RGB {
-	uint8_t r, g, b;
+	uint8_t color[3];
 } RGB;
+
+enum {RED, GREEN, BLUE};
 
 typedef struct BMPImage {
 	uint w, h;

@@ -10,9 +10,16 @@ This library loads the entire BMP image onto the array in BMPImage structure. It
  * RGB  
 ```
 typedef struct RGB {
-    uint8_t r, g, b;
+    uint8_t color[3];
 } RGB;
+
+enum {RED, GREEN, BLUE};
 ```
+
+You can use the colors like `color[RED]`, or also `color[0]`, equivalently.  
+RED, GREEN, BLUE are same as 0, 1, 2, respectively.  
+RGB의 각 색상을 `color[RED]`, 혹은 `color[0]`과 같이 쓸 수 있습니다.  
+RED, GREEN. BLUE는 각각 0, 1, 2번 인덱스와 동일합니다.
 	
  * BMPImage  
 ```
@@ -62,7 +69,7 @@ typedef struct BMPImage {
  * `uint32_t getRGB(BMPImage *img, uint i, uint j, uint8_t *r, uint8_t *g, uint8_t *b)`: get the RGB value from the BMP directly.
  * `uint8_t getPixel(BMPImage *img, uint i, uint j, uint8_t *p)`: get the grayscale value from the BMP directly.
  
-## Example
+## Example (1)
 ```
 uint w, h, i, j;
 uint8_t p;
@@ -79,12 +86,43 @@ for (i = 0; i < h; i++) {
     newimg->pixel[i][j] = 255 - p; // reverse the value
   }
 }
- 		
+
 setPixel(newimg);	// update the BMP with grayscale value
 writeBMP(newimg, "test_new.bmp");
 
 closeBMP(img);
 closeBMP(newimg);
 ```
+
+ 
+## Example (2)
+```
+uint w, h, i, j;
+RGB p;
+BMPImage *img, *newimg;
+
+img = openBMP("test.bmp");
+w = img->w;
+h = img->h;
+
+newimg = newBMP(w, h);
+for (i = 0; i < h; i++) {
+  for (j = 0; j < w; j++) {
+    p = img->rgb[i][j];
+	p.color[RED] = 255 - p.color[RED];
+	p.color[GREEN] = 255 - p.color[GREEN];
+	p.color[BLUE] = 255 - p.color[BLUE];
+	
+    newimg->pixel[i][j] = p;
+  }
+}
+
+setRGB(newimg);	// update the BMP with RGB value
+writeBMP(newimg, "test_new.bmp");
+
+closeBMP(img);
+closeBMP(newimg);
+```
+ 
  
  

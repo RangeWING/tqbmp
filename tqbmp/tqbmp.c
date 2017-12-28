@@ -17,7 +17,7 @@ void setRGB(BMPImage *img) {
 	for (i = 0; i < h; i++) {
 		for (j = 0; j < w; j++) {
 			RGB rgb = img->rgb[i][j];
-			BMP_SetPixelRGB(img->bmp, j, i, rgb.r, rgb.g, rgb.b);
+			BMP_SetPixelRGB(img->bmp, j, i, rgb.color[RED], rgb.color[GREEN], rgb.color[BLUE]);
 		}
 	}
 }
@@ -106,9 +106,9 @@ int getBMPImage(BMPImage *img, const char *bmpfile) {
 		for (j = 0; j < w; j++) {
 			BMP_GetPixelRGB(bmp, j, i, &r, &g, &b);
 			img->pixel[i][j] = (r + g + b) / 3;
-			img->rgb[i][j].r = r;
-			img->rgb[i][j].g = g;
-			img->rgb[i][j].b = b;
+			img->rgb[i][j].color[RED] = r;
+			img->rgb[i][j].color[GREEN] = g;
+			img->rgb[i][j].color[BLUE] = b;
 		}
 	}
 	return 0;
