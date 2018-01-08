@@ -113,7 +113,7 @@ for (i = 0; i < h; i++) {
 	p.color[GREEN] = 255 - p.color[GREEN];
 	p.color[BLUE] = 255 - p.color[BLUE];
 	
-    newimg->pixel[i][j] = p;
+    newimg->rgb[i][j] = p;
   }
 }
 
